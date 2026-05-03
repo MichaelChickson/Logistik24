@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Logistik24 GmbH – Leistungen</title>
+
+    <!-- CSS: Gestaltung der Seite -->
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+            color: #333333;
+        }
+
+        nav {
+            background-color: #1a3a5c;
+            padding: 15px 40px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-right: 25px;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            color: #f0a500;
+        }
+
+        /* Seitentitel-Bereich */
+        .seitentitel {
+            background-color: #1a3a5c;
+            color: #ffffff;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .seitentitel h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        .seitentitel p {
+            color: #c8d8e8;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            color: #1a3a5c;
+            font-size: 24px;
+            border-bottom: 2px solid #f0a500;
+            padding-bottom: 8px;
+            margin-top: 40px;
+        }
+
+        p {
+            line-height: 1.7;
+            color: #444444;
+        }
+
+        /* Einzelne Leistungs-Box */
+        .leistung {
+            background-color: #ffffff;
+            border-left: 5px solid #f0a500;
+            border-radius: 5px;
+            padding: 20px 25px;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+        }
+
+        .leistung h3 {
+            color: #1a3a5c;
+            margin-top: 0;
+            font-size: 20px;
+        }
+
+        .leistung ul {
+            color: #555555;
+            line-height: 1.8;
+        }
+
+        /* Tabelle: Technologievergleich */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th {
+            background-color: #1a3a5c;
+            color: #ffffff;
+            padding: 10px;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #dde3ea;
+        }
+
+        tr:hover {
+            background-color: #f0f4f8;
+        }
+
+        /* Link-Button */
+        .button {
+            display: inline-block;
+            background-color: #1a3a5c;
+            color: #ffffff;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+
+        .button:hover {
+            background-color: #f0a500;
+        }
+
+        footer {
+            background-color: #1a3a5c;
+            color: #c8d8e8;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #f0a500;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html">🏠 Startseite</a>
+        <a href="leistungen.html">📦 Leistungen</a>
+        <a href="kontakt.html">✉️ Kontakt</a>
+    </nav>
+
+    <!-- Seitentitel -->
+    <div class="seitentitel">
+        <h1>Unsere Leistungen</h1>
+        <p>Was Logistik24 für Sie tut – einfach erklärt.</p>
+    </div>
+
+    <!-- Hauptinhalt -->
+    <div class="container">
+
+        <!-- Leistung 1 -->
+        <h2>1. Digitales Lagerverwaltungssystem (WMS)</h2>
+
+        <div class="leistung">
+            <h3>🏭 Wie funktioniert unser Lager?</h3>
+            <p>
+                Jede Kiste, die bei uns eingelagert wird, bekommt einen <b>RFID-Chip</b>.
+                Das System schreibt automatisch folgende Daten auf den Chip:
+            </p>
+            <ul>
+                <li>Kisten-ID (eindeutige Nummer)</li>
+                <li>Inhalt der Kiste</li>
+                <li>Zeitstempel (Wann eingelagert?)</li>
+                <li>Lagerplatz (Wo steht die Kiste?)</li>
+            </ul>
+            <p>
+                Unser Lagerpersonal bekommt <b>Mobilgeräte</b> zum Scannen.
+                So findet jeder Mitarbeiter jede Kiste sofort – ohne langes Suchen.
+            </p>
+        </div>
+
+        <!-- Leistung 2 -->
+        <h2>2. Routenoptimierung mit KI</h2>
+
+        <div class="leistung">
+            <h3>🗺️ Wie optimieren wir die Routen?</h3>
+            <p>Unser System analysiert automatisch drei Dinge:</p>
+            <ul>
+                <li><b>Live-Verkehrsdaten:</b> Stau wird erkannt, Umfahrung wird berechnet.</li>
+                <li><b>Wetterdaten:</b> Bei Regen oder Schnee werden sichere Routen gewählt.</li>
+                <li><b>Telematik:</b> Fahrverhalten wird analysiert, KI gibt Spar-Tipps.</li>
+            </ul>
+        </div>
+
+        <!-- Leistung 3 -->
+        <h2>3. Kundenportal &amp; Live-Tracking</h2>
+
+        <div class="leistung">
+            <h3>📦 Was sehen unsere Kunden?</h3>
+            <ul>
+                <li>Live-Position der Sendung auf einer Karte</li>
+                <li>Voraussichtliches Ankunftsdatum</li>
+                <li>Status beim Zoll (falls international)</li>
+                <li>Push-Benachrichtigungen auf das Handy</li>
+                <li>Bewertung nach der Lieferung (Sterne-System)</li>
+            </ul>
+        </div>
+
+        <!-- Tabelle: Technologievergleich -->
+        <h2>Technologievergleich: Barcode, QR-Code, RFID</h2>
+        <p>Wir nutzen hauptsächlich RFID – hier ist der Vergleich der drei Technologien:</p>
+
+        <table>
+            <tr>
+                <th>Technologie</th>
+                <th>Vorteile</th>
+                <th>Nachteile</th>
+                <th>Einsatz bei uns</th>
+            </tr>
+            <tr>
+                <td>Barcode</td>
+                <td>Günstig, einfach</td>
+                <td>Sichtbarkeit nötig, wenig Daten</td>
+                <td>Ergänzend</td>
+            </tr>
+            <tr>
+                <td>QR-Code</td>
+                <td>Mehr Daten, Smartphone-Scan</td>
+                <td>Sichtbarkeit nötig</td>
+                <td>Ergänzend</td>
+            </tr>
+            <tr>
+                <td><b>RFID</b></td>
+                <td>Kein Sichtkontakt, Bulk-Scan, beschreibbar</td>
+                <td>Teurer, braucht Infrastruktur</td>
+                <td><b>Haupttechnologie ✓</b></td>
+            </tr>
+        </table>
+
+        <a href="kontakt.html" class="button">Jetzt Angebot anfragen →</a>
+
+    </div>
+
+    <!-- Fußzeile -->
+    <footer>
+        <p>© 2026 Logistik24 GmbH · Nürnberg, Bayern</p>
+        <p><a href="index.html">Zurück zur Startseite</a></p>
+    </footer>
+
+</body>
+</html>
