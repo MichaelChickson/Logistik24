@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leistungen – Logistik24 GmbH</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#0d0f14;--surface:#141820;--card:#1a1f2e;--accent:#e8b84b;--accent2:#4be8c8;--text:#e8eaf0;--muted:#7a8098;--border:#252b3b; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-weight:300;overflow-x:hidden}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,15,20,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:60px}
+  .logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.6rem;letter-spacing:2px;color:var(--accent);text-decoration:none}
+  .logo span{color:var(--text)}
+  .nav-links{display:flex;gap:28px;list-style:none}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;transition:color .2s}
+  .nav-links a:hover,.nav-links a.active{color:var(--accent)}
+  .nav-cta{background:var(--accent);color:#000;padding:8px 18px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:1px;text-decoration:none}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+  .hamburger span{width:24px;height:2px;background:var(--text)}
+  .mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;background:var(--surface);border-bottom:1px solid var(--border);padding:20px;z-index:99}
+  .mobile-menu a{display:block;padding:12px 0;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border)}
+  .mobile-menu.open{display:block}
+  
+  .page-hero{padding:120px 24px 60px;background:linear-gradient(180deg,var(--surface) 0%,var(--bg) 100%);border-bottom:1px solid var(--border)}
+  .page-hero-inner{max-width:1200px;margin:0 auto}
+  .breadcrumb{font-size:.78rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
+  .breadcrumb a{color:var(--muted);text-decoration:none}
+  .breadcrumb a:hover{color:var(--accent)}
+  h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.5rem,5vw,4rem);text-transform:uppercase;letter-spacing:-1px}
+  h1 em{font-style:normal;color:var(--accent)}
+  .subtitle{color:var(--muted);font-size:1.05rem;margin-top:16px;max-width:560px;line-height:1.7}
+
+  section{padding:64px 24px}
+  .inner{max-width:1200px;margin:0 auto}
+
+  /* WMS */
+  .wms-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-top:40px}
+  .wms-flow{background:var(--card);border:1px solid var(--border);padding:28px}
+  .wms-flow h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:20px}
+  .flow-step{display:flex;gap:14px;align-items:flex-start;margin-bottom:12px}
+  .flow-arrow{display:flex;align-items:center;color:var(--muted);font-size:.8rem;padding:4px 0 4px 20px}
+  .step-num{background:var(--accent);color:#000;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:.85rem;padding:4px 8px;min-width:28px;text-align:center;margin-top:2px}
+  .step-text h4{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+  .step-text p{font-size:.82rem;color:var(--muted);margin-top:2px}
+  .chip-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+  .chip{background:var(--bg);border:1px solid var(--border);padding:5px 12px;font-size:.78rem;letter-spacing:1px;color:var(--accent2);text-transform:uppercase}
+
+  /* ROUTING */
+  .route-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-top:40px}
+  .route-card{background:var(--card);padding:28px;transition:background .2s}
+  .route-card:hover{background:#1f2536}
+  .route-icon{font-size:1.8rem;margin-bottom:12px}
+  .route-card h3{font-family:'Barlow Condensed',sans-serif;font-size:1.05rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+  .route-card p{font-size:.85rem;color:var(--muted);line-height:1.65}
+
+  /* CRM */
+  .crm-list{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+  .crm-item{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent2);padding:24px}
+  .crm-item h3{font-family:'Barlow Condensed',sans-serif;font-size:1.05rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+  .crm-item p{font-size:.85rem;color:var(--muted);line-height:1.65}
+  .crm-item ul{margin-top:8px;padding-left:0;list-style:none}
+  .crm-item li{font-size:.83rem;color:var(--muted);padding:4px 0;border-bottom:1px solid var(--border)}
+  .crm-item li::before{content:'→ ';color:var(--accent2)}
+
+  .section-label{font-size:.75rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .section-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(1.8rem,3.5vw,2.6rem);text-transform:uppercase}
+  .section-title em{font-style:normal;color:var(--accent)}
+  .divider{border:none;border-top:1px solid var(--border);margin:0}
+
+  footer{background:var(--surface);border-top:1px solid var(--border);padding:40px 24px}
+  .footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+  .footer-links{display:flex;gap:24px}
+  .footer-links a{color:var(--muted);text-decoration:none;font-size:.85rem}
+  .footer-links a:hover{color:var(--accent)}
+  .footer-copy{color:var(--muted);font-size:.8rem}
+
+  @media(max-width:768px){
+    .nav-links,.nav-cta{display:none}
+    .hamburger{display:flex}
+    .wms-grid{grid-template-columns:1fr}
+    .crm-list{grid-template-columns:1fr}
+    .footer-inner{flex-direction:column;text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">LOGISTIK<span>24</span></a>
+    <ul class="nav-links">
+      <li><a href="services.html" class="active">Leistungen</a></li>
+      <li><a href="technologie.html">Technologie</a></li>
+      <li><a href="tracking.html">Sendungsverfolgung</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+    <a href="kontakt.html" class="nav-cta">Angebot</a>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="services.html">Leistungen</a>
+  <a href="technologie.html">Technologie</a>
+  <a href="tracking.html">Sendungsverfolgung</a>
+  <a href="kontakt.html">Kontakt</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Leistungen</div>
+    <h1>Unsere <em>Leistungen</em></h1>
+    <p class="subtitle">Drei digitale Kernbereiche – perfekt aufeinander abgestimmt für maximale Effizienz in Ihrer Lieferkette.</p>
+  </div>
+</div>
+
+<section>
+  <div class="inner">
+    <div class="section-label">01 – Lager</div>
+    <div class="section-title">Digitales <em>Inventar&shy;verwaltungs&shy;system</em></div>
+    <div class="wms-grid">
+      <div>
+        <p style="color:var(--muted);line-height:1.75;margin-bottom:20px">Unser WMS (Warehouse Management System) kombiniert RFID-Technologie mit einem Hochlagersystem. Lagerpersonal erhält Mobilgeräte zur Echtzeit-Bestandsübersicht – Einlagerung, Suche und Bestellung auf einem Gerät.</p>
+        <div class="chip-tags">
+          <div class="chip">RFID-Chips</div>
+          <div class="chip">Kisten-ID</div>
+          <div class="chip">Zeitstempel</div>
+          <div class="chip">Lagerplatz</div>
+          <div class="chip">Mobilgeräte</div>
+          <div class="chip">Bulk-Scanning</div>
+        </div>
+      </div>
+      <div class="wms-flow">
+        <h3>Einlagerungsablauf</h3>
+        <div class="flow-step">
+          <div class="step-num">1</div>
+          <div class="step-text"><h4>Kiste einlagern</h4><p>Ware wird angeliefert und in das Hochlager gebracht</p></div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">
+          <div class="step-num">2</div>
+          <div class="step-text"><h4>RFID-Chip kleben</h4><p>Eindeutiger Chip wird auf der Kiste angebracht</p></div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">
+          <div class="step-num">3</div>
+          <div class="step-text"><h4>System beschreibt Chip</h4><p>Kisten-ID, Inhalt, Zeitstempel, Lagerplatz</p></div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">
+          <div class="step-num">4</div>
+          <div class="step-text"><h4>Echtzeit-Übersicht</h4><p>Bestand sofort auf allen Mobilgeräten sichtbar</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section style="background:var(--surface)">
+  <div class="inner">
+    <div class="section-label">02 – Transport</div>
+    <div class="section-title">KI-gestützte <em>Routen&shy;optimierung</em></div>
+    <div class="route-cards">
+      <div class="route-card">
+        <div class="route-icon">🚦</div>
+        <h3>Live-Verkehr</h3>
+        <p>Staudaten in Echtzeit: das GPS berechnet automatisch eine geeignete Umfahrung und reduziert Stop-and-Go-Verbrauch.</p>
+      </div>
+      <div class="route-card">
+        <div class="route-icon">🌧️</div>
+        <h3>Wetter-Navigation</h3>
+        <p>Bei Starkregen oder Schneefall werden gefährliche Streckenabschnitte automatisch vermieden – mehr Sicherheit, planbare Zeiten.</p>
+      </div>
+      <div class="route-card">
+        <div class="route-icon">📡</div>
+        <h3>Telematik</h3>
+        <p>Auswertung von Beschleunigung, Bremsen und Leerlauf. Fahrer erhalten KI-Tipps für eine kraftstoffsparende Fahrweise.</p>
+      </div>
+      <div class="route-card">
+        <div class="route-icon">📈</div>
+        <h3>Auswertung</h3>
+        <p>Kalkulierte vs. tatsächliche Fahrtzeit im Vergleich – Abweichungen und Vorfälle fließen automatisch in zukünftige Routen ein.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section>
+  <div class="inner">
+    <div class="section-label">03 – Kunden</div>
+    <div class="section-title">Customer <em>Interaction Center</em></div>
+    <div class="crm-list">
+      <div class="crm-item">
+        <h3>Live-Tracking Portal</h3>
+        <p>Kunden verfolgen ihre Sendung in Echtzeit und erhalten Push-Benachrichtigungen statt E-Mails.</p>
+        <ul>
+          <li>Voraussichtliches Ankunftsdatum</li>
+          <li>Zollstatus & mögliche Kosten</li>
+          <li>GPS-Position der Sendung</li>
+        </ul>
+      </div>
+      <div class="crm-item">
+        <h3>Digitaler Kundenservice</h3>
+        <p>Schnelle Hilfe ohne Warteschleife – rund um die Uhr verfügbar.</p>
+        <ul>
+          <li>FAQ mit häufigsten Fragen</li>
+          <li>Live-Chat mit Mitarbeitenden</li>
+          <li>Online-Ticketsystem für Reklamationen</li>
+        </ul>
+      </div>
+      <div class="crm-item">
+        <h3>Bewertungssystem</h3>
+        <p>Nach jeder Lieferung: einfache Sterne-Bewertung per Handy mit optionalem Kommentarfeld.</p>
+        <ul>
+          <li>Direktes Feedback in Echtzeit</li>
+          <li>Kontinuierliche Qualitätssicherung</li>
+        </ul>
+      </div>
+      <div class="crm-item">
+        <h3>Push-Benachrichtigungen</h3>
+        <p>Proaktive Information statt reaktiver Kommunikation – Kunden werden automatisch auf dem Laufenden gehalten.</p>
+        <ul>
+          <li>Statusänderungen in Echtzeit</li>
+          <li>Verzögerungsmeldungen</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="logo" style="font-size:1.2rem">LOGISTIK<span>24</span></a>
+    <div class="footer-links">
+      <a href="services.html">Leistungen</a>
+      <a href="technologie.html">Technologie</a>
+      <a href="tracking.html">Tracking</a>
+      <a href="kontakt.html">Kontakt</a>
+    </div>
+    <div class="footer-copy">© 2026 Logistik24 GmbH</div>
+  </div>
+</footer>
+<script>function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}</script>
+</body>
+</html>
